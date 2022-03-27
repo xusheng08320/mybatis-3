@@ -46,6 +46,8 @@ import org.apache.ibatis.domain.blog.DraftPost;
 import org.apache.ibatis.domain.blog.Post;
 import org.apache.ibatis.domain.blog.Section;
 import org.apache.ibatis.executor.result.DefaultResultHandler;
+import org.apache.ibatis.logging.Log;
+import org.apache.ibatis.logging.LogFactory;
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.RowBounds;
@@ -61,6 +63,8 @@ import org.junit.Test;
 
 public class BindingTest {
   private static SqlSessionFactory sqlSessionFactory;
+
+  Log log = LogFactory.getLog(BindingTest.class);
 
   @BeforeClass
   public static void setup() throws Exception {
@@ -82,6 +86,7 @@ public class BindingTest {
 
   @Test
   public void shouldSelectBlogWithPostsUsingSubSelect() throws Exception {
+    log.debug("mybatis test");
     SqlSession session = sqlSessionFactory.openSession();
     try {
       BoundBlogMapper mapper = session.getMapper(BoundBlogMapper.class);
