@@ -7,4 +7,9 @@
     <select id="selectUsers" resultType="org.apache.ibatis.demo.User">
         select * from users
     </select>
+
+    <select id="selectByName" resultType="org.apache.ibatis.demo.User">
+        select * from users where name = #{name}
+    </select>
+
 </mapper>

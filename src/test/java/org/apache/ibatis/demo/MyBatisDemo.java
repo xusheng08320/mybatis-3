@@ -18,6 +18,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import javax.sql.DataSource;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -54,5 +55,13 @@ public class MyBatisDemo {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         UserDao userDao = sqlSession.getMapper(UserDao.class);
         log.debug(userDao.selectUsers().toString());
+    }
+
+    @Test
+    public void test2() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserDao userDao = sqlSession.getMapper(UserDao.class);
+        List<User> user = userDao.selectByName("张三");
+        System.out.println(user);
     }
 }
